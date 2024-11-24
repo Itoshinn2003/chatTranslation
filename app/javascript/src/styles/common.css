@@ -1,0 +1,57 @@
+body{
+    background-color:#1D3C6B;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.sign-up, .login {
+    border: 2px solid #228B22;
+    background-color:rgb(220, 242, 220);
+    border-radius: 10px;
+    margin-top:160px;
+    width:500px;
+}
+.stylish-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+  }
+  
+  /* フォーカス時のスタイル */
+  .stylish-input:focus {
+    border-color: #4CAF50; /* 緑色のボーダー */
+    background-color: #e8f7e2; /* 明るい背景色 */
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5); /* フォーカス時のシャドウ */
+  }
+  .signin-btn, .login-btn {
+    /* display: inline-block; */
+    padding: 12px 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    margin:10px auto;
+    background-color: #28a745; /* 緑色の背景 */
+    border: 2px solid #28a745; /* ボーダーも緑色 */
+    transition: all 0.3s ease; /* エフェクトの滑らかさ */
+  }
+  
+  /* ホバー時のスタイル */
+  .signin-btn:hover, .login-btn:hover {
+    background-color: #218838; /* ホバー時に少し暗い緑 */
+    border-color: #218838; /* ボーダーの色も変更 */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 少しシャドウを加える */
+  }
+  
+  /* フォーカス時のスタイル */
+  .signin-btn:focus, .login-btn:focus {
+    border-color: #1e7e34; /* フォーカス時のボーダー色 */
+    background-color: #1e7e34; /* フォーカス時の背景色 */
+    outline: none; /* デフォルトのアウトラインを削除 */
+    box-shadow: 0 0 5px rgba(46, 204, 113, 0.5); /* フォーカス時に緑色のシャドウ */
+  }
+  

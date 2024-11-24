@@ -1,6 +1,8 @@
 import { createApp } from 'vue'
-// import './style.css'
-// import './styles/common.css'
+
+import 'bootstrap/dist/css/bootstrap.min.css'
+import '@/styles/reset.css'
+import '@/styles/common.css'
 import App from '@/App.vue'
 import router from '@/router';
 // import { createPinia } from 'pinia';
