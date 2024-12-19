@@ -18,7 +18,7 @@
             <input type="text" class="stylish-input" placeholder="Your Language">
         </div>
         <input type='button' value="登録" class="signin-btn mb-4">
-        <a>ログインに進む</a>
+        <a href="/home/timeline">ログインに進む</a>
     </form>
 </template>
 
