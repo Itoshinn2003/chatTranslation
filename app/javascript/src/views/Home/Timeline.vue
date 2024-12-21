@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
 import Message from '@/components/HomeMessage.vue';
 import Profile from '@/components/HomeProfile.vue';
+import opponentProfile from '@/components/opponentProfile.vue';
 
 let currentTab = ref(Timeline);
 let router = useRouter();
@@ -110,6 +111,9 @@ function tabChange(tabName: string) {
             <li @click="tabChange('Profile')">Profile</li>
         </ul>
     </div>
+
+
+    <opponentProfile></opponentProfile>
     </div>
 </template>
 
