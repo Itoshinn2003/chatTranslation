@@ -21,7 +21,7 @@ function tabChange(tabName: string) {
 
 <template>
     <div class="home">
-        Timeline
+    <h2 class="text-center">CHAT-TRANSLATION</h2>
     <div class="tweet-box">
     <div class="tweet">
         <div class="tweet-header">
@@ -123,23 +123,6 @@ ul {
     padding:10px 0;
     background-color:white;
 }
-
-
-
-.tweet {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  margin: 20px auto;
-  padding: 15px;
-}
-
-.tweet-header {
-  display: flex;
-  align-items: center;
-}
-
 .profile-img {
   width: 50px;
   height: 50px;
@@ -163,24 +146,5 @@ ul {
 .timestamp {
   color: #aab8c2;
   font-size: 0.85em;
-}
-
-.tweet-body {
-  margin-top: 10px;
-}
-
-.tweet-text {
-  font-size: 1em;
-  color: #14171a;
-}
-
-.tweet-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-.tweet-box {
-    height:90%;
-    overflow: scroll;
 }
 </style>

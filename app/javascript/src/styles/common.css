@@ -10,6 +10,12 @@ body{
   margin:0 auto;
   height:100%;
 }
+h2{
+  padding: 20px 0;
+  background-color:#228B22;
+  font-size:30px;
+  color:white;
+}
 .sign-up, .login {
     border: 2px solid #228B22;
     background-color:rgb(220, 242, 220);
@@ -75,3 +81,34 @@ body{
   /* .menu-border{
     border-right:1px solid #228B22;
   } */
+
+  .tweet {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+  .tweet-header {
+    display: flex;
+    align-items: center;
+  }
+  .tweet-body {
+    margin-top: 10px;
+  }
+  
+  .tweet-text {
+    font-size: 1em;
+    color: #14171a;
+  }
+  
+  .tweet-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  .tweet-box {
+      height:90%;
+      overflow: scroll;
+  }

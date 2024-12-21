@@ -21,14 +21,12 @@ function tabChange(tabName: string) {
 </script>
 <template>
 <div class="home">
-    Message
-    <div class="member-list-container">
-    <h1 class="page-title">DM</h1>
+    <h2 class="text-center">CHAT-TRANSLATION</h2>
     <div class="member-list">
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user1</span>
           <p class="member-bio">趣味: 音楽, 映画。仲良くなりたいです！</p>
         </div>
@@ -36,7 +34,7 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user1</span>
           <p class="member-bio">趣味: 音楽, 映画。仲良くなりたいです！</p>
         </div>
@@ -44,7 +42,7 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user1</span>
           <p class="member-bio">趣味: 音楽, 映画。仲良くなりたいです！</p>
         </div>
@@ -54,7 +52,7 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-            <h2 class="member-name">ユーザー3</h2>
+            <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user2</span>
           <p class="member-bio">趣味: 音楽, 映画。仲良くなりたいです！</p>
         </div>
@@ -62,7 +60,7 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user3</span>
           <p class="member-bio">ゲーム、映画、アニメ。気軽に話しかけてください！</p>
         </div>
@@ -70,7 +68,7 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user3</span>
           <p class="member-bio">ゲーム、映画、アニメ。気軽に話しかけてください！</p>
         </div>
@@ -79,15 +77,12 @@ function tabChange(tabName: string) {
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
-          <h2 class="member-name">ユーザー3</h2>
+          <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user3</span>
           <p class="member-bio">ゲーム、映画、アニメ。気軽に話しかけてください！</p>
         </div>
       </div>
-
-      <!-- 他のメンバーカードを追加 -->
     </div>
-  </div>
     <div class="menu-bar">
         <ul>
             <!-- ディレクティブの後はダブルクヲーテーションの中がjavascriptの式をしてみられるので -->
@@ -100,33 +95,31 @@ function tabChange(tabName: string) {
 </template>
 
 <style>
-.member-list-container {
+/* .member-list-container {
   width: 100%;
-  margin: 30px auto 0;
-}
+  margin: 10px auto 0;
+} */
 
 .page-title {
   font-size: 2.5em;
   font-weight: bold;
   color: #333;
-  margin-bottom: 20px;
+  text-align:center;
 }
 
-/* メンバー一覧 */
 .member-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   height:90%;
-    overflow: scroll;
+  overflow: scroll;
 }
-
-/* メンバーカード */
 .member-card {
   background-color: #fff;
   border-radius: 10px;
   display: flex;
   align-items: center;
   border-bottom:0.5px solid rgb(175, 175, 175);
+  padding: 0 10px;
 }
 
 /* メンバーのプロフィール画像 */

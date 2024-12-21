@@ -21,16 +21,17 @@ function tabChange(tabName: string) {
 </script>
 <template>
 <div class="home">
-        Profile
+    <h2 class="text-center">CHAT-TRANSLATION</h2>
     <div class="profile-header">
       <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-image">
       <div class="profile-info">
-        <h2 class="profile-name">いとしん</h2>
+        <h3 class="profile-name">いとしん</h3>
         <span class="profile-id">@itsn39</span>
         <p class="profile-bio">一言コメントがここに入ります。趣味や自己紹介など。</p>
+        <p class="follow-number">follow 29 follower 29</p>
       </div>
     </div>
-    <div class="tweet-box">
+    <div class="profile-tweet-box">
     <div class="tweet">
         <div class="tweet-header">
             <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
@@ -108,49 +109,51 @@ function tabChange(tabName: string) {
 </template>
 
 <style>
-/* .profile-header {
-  width:100%;
-  background-color:white;
-  display: flex;
-  margin-bottom: 20px;
-} */
 .profile-header {
-  display: flex;               /* 横並びにするためにflexboxを使用 */
-  align-items: center;         /* 画像とテキストを縦方向に中央揃え */
-  margin-bottom: 20px;         /* 下に余白を追加 */
+  display: flex;               
+  align-items: center;         
+  margin-bottom: 20px;        
+}
+.follow-number {
+    margin-top:10px;
+    color:rgb(45, 45, 45);
+    font-size:14px;
 }
 
 .profile-image {
-  width: 80px;                /* プロフィール画像の幅 */
-  height: 80px;               /* プロフィール画像の高さ */
-  border-radius: 50%;          /* 丸くするためにborder-radiusを50%に */
-  object-fit: cover;           /* 画像が枠内にきれいに収まるように調整 */
-  margin-right: 20px;          /* 画像とテキストの間に余白を追加 */
+  width: 80px;             
+  height: 80px;            
+  border-radius: 50%;    
+  object-fit: cover;         
+  margin-right: 20px;        
 }
 
 .profile-info {
-  flex: 1;                     /* テキスト部分を残りのスペースで広げる */
+  flex: 1;                  
 }
-
+.profile-tweet-box {
+    height:65%;
+      overflow: scroll;
+}
 .profile-name {
-  font-size: 1.8em;            /* ユーザー名のフォントサイズ */
-  font-weight: bold;           /* ユーザー名を太字に */
-  color: #14171a;              /* ユーザー名の文字色 */
-  margin-bottom: 5px;          /* ユーザー名の下に少し余白 */
+  font-size: 1.8em;          
+  font-weight: bold;           
+  color: #14171a;       
+  margin-bottom: 5px;          
 }
 
 .profile-id {
-  color: #657786;              /* ユーザーIDの文字色（薄いグレー） */
-  font-size: 1.1em;            /* ユーザーIDのフォントサイズ */
-  margin-bottom: 10px;         /* IDの下に余白 */
+  color: #657786;      
+  font-size: 1.1em;       
+  margin-bottom: 10px;  
 }
 
 .profile-bio {
-  color: #14171a;              /* 一言コメントの文字色 */
-  font-size: 1.1em;            /* 一言コメントのフォントサイズ */
-  line-height: 1.5;            /* 一行あたりの行間を広げる */
-  max-width: 500px;            /* コメント部分の最大幅を設定 */
-  word-wrap: break-word;       /* 長い単語を折り返して表示 */
+  color: #14171a;  
+  font-size: 1.1em;     
+  line-height: 1.5;           
+  max-width: 500px;    
+  word-wrap: break-word;       
 }
 
 
@@ -161,28 +164,5 @@ function tabChange(tabName: string) {
   width: 90%;
   margin: 20px auto;
   padding: 15px;
-}
-
-.tweet-header {
-  display: flex;
-  align-items: center;
-}
-.tweet-body {
-  margin-top: 10px;
-}
-
-.tweet-text {
-  font-size: 1em;
-  color: #14171a;
-}
-
-.tweet-footer {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 15px;
-}
-.tweet-box {
-    height:90%;
-    overflow: scroll;
 }
 </style>
