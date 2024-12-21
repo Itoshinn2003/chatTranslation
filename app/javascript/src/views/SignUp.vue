@@ -1,3 +1,10 @@
+<script setup lang="ts">
+import { useRouter } from 'vue-router';
+let router = useRouter();
+function routedummy() {
+    router.push({ name: 'Timeline' })
+}
+</script>
 <template>
     <form class="mx-auto sign-up p-5">
         <h1 class="mb-3">新規登録</h1>
@@ -18,7 +25,7 @@
             <input type="text" class="stylish-input" placeholder="Your Language">
         </div>
         <input type='button' value="登録" class="signin-btn mb-4">
-        <a href="/home/timeline">ログインに進む</a>
+        <a @click="routedummy()">ログインに進む</a>
     </form>
 </template>
 
