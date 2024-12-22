@@ -8,6 +8,7 @@ import opponentProfile from '@/components/opponentProfile.vue';
 
 let currentTab = ref(Timeline);
 let router = useRouter();
+let showProfile = ref(false);
 
 function tabChange(tabName: string) {
   if (tabName === 'Timeline') {
@@ -18,6 +19,16 @@ function tabChange(tabName: string) {
     router.push({ name: 'Profile' });
   }
 }
+
+function showOpponentProfile() {
+    if (showProfile.value) {
+        history.pushState(null, '', '/home/timeline');
+        showProfile.value = false;
+    } else {
+        history.pushState(null, '', '/home/timeline/profile/32');
+        showProfile.value = true;
+    }
+}
 </script>
 
 <template>
@@ -26,7 +37,7 @@ function tabChange(tabName: string) {
     <div class="tweet-box">
     <div class="tweet">
         <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
+            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img"  @click="showOpponentProfile">
             <div class="user-info">
                 <span class="username">いとしん</span>
                 <span class="handle">@itsn39</span>
@@ -113,7 +124,7 @@ function tabChange(tabName: string) {
     </div>
 
 
-    <opponentProfile></opponentProfile>
+    <opponentProfile v-if="showProfile"></opponentProfile>
     </div>
 </template>
 
