@@ -4,10 +4,12 @@ import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
 import Message from '@/components/HomeMessage.vue';
 import Profile from '@/components/HomeProfile.vue';
+import opponentProfile from '@/components/opponentProfile.vue';
 
 let currentTab = ref(Timeline);
-
 let router = useRouter();
+let showProfile = ref(false);
+
 
 function tabChange(tabName: string) {
   if (tabName === 'Timeline') {
@@ -18,13 +20,27 @@ function tabChange(tabName: string) {
     router.push({ name: 'Profile' });
   }
 }
+
+function showOpponentProfile() {
+    if (showProfile.value) {
+        history.pushState(null, '', '/home/message');
+        showProfile.value = false;
+    } else {
+        history.pushState(null, '', '/home/message/profile/32');
+        showProfile.value = true;
+    }
+}
+
+function showChat() {
+    router.push({name:'Chat'})
+}
 </script>
 <template>
 <div class="home">
     <h2 class="text-center">CHAT-TRANSLATION</h2>
     <div class="member-list">
-      <div class="member-card">
-        <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
+      <div class="member-card" @click="showChat">
+        <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar" @click="showOpponentProfile">
         <div class="member-info">
           <h3 class="member-name">ユーザー3</h3>
           <span class="member-id">@user1</span>
@@ -91,6 +107,7 @@ function tabChange(tabName: string) {
             <li @click="tabChange('Profile')">Profile</li>
         </ul>
     </div>
+    <opponentProfile v-if="showProfile"></opponentProfile>
 </div>
 </template>
 

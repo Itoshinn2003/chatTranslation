@@ -5,6 +5,7 @@ import Home from '@/views/Home.vue';
 import Message from '@/views/Home/Message.vue'
 import Profile from '@/views/Home/Profile.vue'
 import Timeline from '@/views/Home/Timeline.vue'
+import Chat from '@/views/Chat.vue'
 
 
 const routes = [
@@ -32,6 +33,11 @@ const routes = [
         path:'/home/profile',
         name: 'Profile',
         component: Profile
+    },
+    {
+        path:'/home/message/10',
+        name: 'Chat',
+        component: Chat
     }
 
 ]
