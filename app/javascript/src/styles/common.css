@@ -111,4 +111,5 @@ h2{
   .tweet-box {
       height:90%;
       overflow: scroll;
+      padding-bottom:50px;
   }

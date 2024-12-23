@@ -63,8 +63,6 @@ function showChat() {
           <p class="member-bio">趣味: 音楽, 映画。仲良くなりたいです！</p>
         </div>
       </div>
-
-      
       <div class="member-card">
         <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="member-avatar">
         <div class="member-info">
@@ -112,10 +110,6 @@ function showChat() {
 </template>
 
 <style>
-/* .member-list-container {
-  width: 100%;
-  margin: 10px auto 0;
-} */
 
 .page-title {
   font-size: 2.5em;
@@ -129,6 +123,7 @@ function showChat() {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   height:90%;
   overflow: scroll;
+  padding-bottom:50px;
 }
 .member-card {
   background-color: #fff;

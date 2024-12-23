@@ -205,7 +205,8 @@ function showFollowerList() {
 }
 .profile-tweet-box {
     height:65%;
-      overflow: scroll;
+    overflow: scroll;
+    padding-bottom:50px;
 }
 .profile-name {
   font-size: 1.8em;          
