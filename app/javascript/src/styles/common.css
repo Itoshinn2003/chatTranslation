@@ -82,7 +82,7 @@ h2{
     border-right:1px solid #228B22;
   } */
 
-  .tweet {
+  .post {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -90,26 +90,42 @@ h2{
     margin: 20px auto;
     padding: 15px;
   }
-  .tweet-header {
+  .post-header {
     display: flex;
     align-items: center;
   }
-  .tweet-body {
+  .post-body {
     margin-top: 10px;
   }
   
-  .tweet-text {
+  .post-text {
     font-size: 1em;
     color: #14171a;
   }
   
-  .tweet-footer {
+  .post-footer {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
   }
-  .tweet-box {
-      height:90%;
+  .post-box {
       overflow: scroll;
       padding-bottom:50px;
+  }
+  .post-user-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post-username {
+    font-weight: bold;
+  }
+  
+  .post-handle {
+    color: #657786;
+  }
+  
+  .post-timestamp {
+    color: #aab8c2;
+    font-size: 0.85em;
   }

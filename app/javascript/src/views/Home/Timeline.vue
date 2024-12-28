@@ -5,7 +5,9 @@ import Timeline from '@/components/HomeTimeline.vue';
 import Message from '@/components/HomeMessage.vue';
 import Profile from '@/components/HomeProfile.vue';
 import opponentProfile from '@/components/opponentProfile.vue';
+import postBox from '@/components/postBox.vue';
 
+let timelineHeight = '90%';
 let currentTab = ref(Timeline);
 let router = useRouter();
 let showProfile = ref(false);
@@ -34,86 +36,7 @@ function showOpponentProfile() {
 <template>
     <div class="home">
     <h2 class="text-center">CHAT-TRANSLATION</h2>
-    <div class="tweet-box">
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img"  @click="showOpponentProfile">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    </div>
+    <postBox :height=timelineHeight></postBox>
   
     <div class="menu-bar">
         <ul>
@@ -122,9 +45,6 @@ function showOpponentProfile() {
             <li @click="tabChange('Profile')">Profile</li>
         </ul>
     </div>
-
-
-    <opponentProfile v-if="showProfile"></opponentProfile>
     </div>
 </template>
 
@@ -143,23 +63,5 @@ ul {
   height: 50px;
   border-radius: 50%;
   margin-right: 10px;
-}
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.username {
-  font-weight: bold;
-}
-
-.handle {
-  color: #657786;
-}
-
-.timestamp {
-  color: #aab8c2;
-  font-size: 0.85em;
 }
 </style>

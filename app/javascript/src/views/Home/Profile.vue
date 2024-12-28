@@ -2,11 +2,10 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
-import Message from '@/components/HomeMessage.vue';
-import Profile from '@/components/HomeProfile.vue';
+import postBox from '@/components/postBox.vue';
 
 let currentTab = ref(Timeline);
-
+let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
@@ -55,73 +54,7 @@ function showFollowerList() {
         <button>プロフィール編集</button>
       </div>
     </div>
-    <div class="profile-tweet-box">
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    <div class="tweet">
-        <div class="tweet-header">
-            <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-img">
-            <div class="user-info">
-                <span class="username">いとしん</span>
-                <span class="handle">@itsn39</span>
-                <span class="timestamp">2024/12/19 17:14</span>
-            </div>
-        </div>
-        <div class="tweet-body">
-            <p class="tweet-text">これはツイートの内容が入るテキストです。ハッシュタグやリンクもここに入れられます</p>
-        </div>
-    </div>
-    </div>
+    <postBox :height=timelineHeight></postBox>
     <div class="menu-bar">
         <ul>
             <li @click="tabChange('Timeline')">TimeLine</li>
@@ -203,23 +136,6 @@ function showFollowerList() {
 .profile-info {
   flex: 1;                  
 }
-.profile-tweet-box {
-    height:65%;
-    overflow: scroll;
-    padding-bottom:50px;
-}
-.profile-name {
-  font-size: 1.8em;          
-  font-weight: bold;           
-  color: #14171a;       
-  margin-bottom: 5px;          
-}
-
-.profile-id {
-  color: #657786;      
-  font-size: 1.1em;       
-  margin-bottom: 10px;  
-}
 
 .profile-bio {
   color: #14171a;  
@@ -227,15 +143,5 @@ function showFollowerList() {
   line-height: 1.5;           
   max-width: 500px;    
   word-wrap: break-word;       
-}
-
-
-.tweet {
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  margin: 20px auto;
-  padding: 15px;
 }
 </style>
