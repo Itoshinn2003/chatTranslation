@@ -2,10 +2,8 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
-import Message from '@/components/HomeMessage.vue';
-import Profile from '@/components/HomeProfile.vue';
-import opponentProfile from '@/components/opponentProfile.vue';
 import postBox from '@/components/postBox.vue';
+import menuBar from '@/components/menuBar.vue';
 
 let timelineHeight = '90%';
 let currentTab = ref(Timeline);
@@ -37,14 +35,7 @@ function showOpponentProfile() {
     <div class="home">
     <h2 class="text-center">CHAT-TRANSLATION</h2>
     <postBox :height=timelineHeight></postBox>
-  
-    <div class="menu-bar">
-        <ul>
-            <li @click="tabChange('Timeline')">TimeLine</li>
-            <li @click="tabChange('Message')">Message</li>
-            <li @click="tabChange('Profile')">Profile</li>
-        </ul>
-    </div>
+    <menuBar></menuBar>
     </div>
 </template>
 

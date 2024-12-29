@@ -3,6 +3,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
 import postBox from '@/components/postBox.vue';
+import menuBar from '@/components/menuBar.vue';
 
 let currentTab = ref(Timeline);
 let timelineHeight = '65%';
@@ -10,16 +11,6 @@ let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
 
-
-function tabChange(tabName: string) {
-  if (tabName === 'Timeline') {
-    router.push({ name: 'Timeline' });
-  } else if (tabName === 'Message') {
-    router.push({ name: 'Message' });
-  } else if (tabName === 'Profile') {
-    router.push({ name: 'Profile' });
-  }
-}
 
 function showFollowList() {
     if (showFollow.value) {
@@ -55,13 +46,7 @@ function showFollowerList() {
       </div>
     </div>
     <postBox :height=timelineHeight></postBox>
-    <div class="menu-bar">
-        <ul>
-            <li @click="tabChange('Timeline')">TimeLine</li>
-            <li @click="tabChange('Message')">Message</li>
-            <li @click="tabChange('Profile')">Profile</li>
-        </ul>
-    </div>
+    <menuBar></menuBar>
 
     <div class="follow-list" v-if="showFollow">
     <p>フォロー</p>

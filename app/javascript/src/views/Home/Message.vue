@@ -2,9 +2,8 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
-import Message from '@/components/HomeMessage.vue';
-import Profile from '@/components/HomeProfile.vue';
 import opponentProfile from '@/components/opponentProfile.vue';
+import menuBar from '@/components/menuBar.vue';
 
 let currentTab = ref(Timeline);
 let router = useRouter();
@@ -97,14 +96,7 @@ function showChat() {
         </div>
       </div>
     </div>
-    <div class="menu-bar">
-        <ul>
-            <!-- ディレクティブの後はダブルクヲーテーションの中がjavascriptの式をしてみられるので -->
-            <li @click="tabChange('Timeline')">TimeLine</li>
-            <li @click="tabChange('Message')">Message</li>
-            <li @click="tabChange('Profile')">Profile</li>
-        </ul>
-    </div>
+    <menuBar></menuBar>
     <opponentProfile v-if="showProfile"></opponentProfile>
 </div>
 </template>
