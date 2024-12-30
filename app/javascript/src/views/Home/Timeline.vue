@@ -40,15 +40,6 @@ function showOpponentProfile() {
 </template>
 
 <style>
-ul {
-    width:100%;
-    display:flex;
-    text-align:center;
-    justify-content:space-around;
-    border-top:1px solid #228B22;
-    padding:10px 0;
-    background-color:white;
-}
 .profile-img {
   width: 50px;
   height: 50px;

@@ -20,18 +20,12 @@ function tabChange(tabName: string) {
 <template>
     <div class="home">
         <component :is="currentTab"/>
-    <div class="menu-bar">
-        <ul>
-            <li @click="tabChange('Timeline')">TimeLine</li>
-            <li @click="tabChange('Message')">Message</li>
-            <li @click="tabChange('Profile')">Profile</li>
-        </ul>
-    </div>
+    <menuBar></menuBar>
     </div>
 </template>
 
 <style>
-ul {
+.bar-list {
     width:100%;
     display:flex;
     text-align:center;

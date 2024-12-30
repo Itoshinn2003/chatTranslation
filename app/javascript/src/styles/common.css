@@ -129,3 +129,12 @@ h2{
     color: #aab8c2;
     font-size: 0.85em;
   }
+  .bar-list {
+    width:100%;
+    display:flex;
+    text-align:center;
+    justify-content:space-around;
+    border-top:1px solid #228B22;
+    padding:10px 0;
+    background-color:white;
+}

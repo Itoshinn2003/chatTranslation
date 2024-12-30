@@ -15,7 +15,7 @@ function tabChange(tabName: string) {
 </script>
 <template>
     <div class="menu-bar">
-        <ul>
+        <ul class="bar-list">
             <li @click="tabChange('Timeline')">TimeLine</li>
             <li @click="tabChange('Message')">Message</li>
             <li @click="tabChange('Profile')">Profile</li>

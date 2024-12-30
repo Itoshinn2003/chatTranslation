@@ -3,6 +3,7 @@ import { useRouter } from 'vue-router';
 import Timeline from '@/components/HomeTimeline.vue';
 import Message from '@/components/HomeMessage.vue';
 import Profile from '@/components/HomeProfile.vue';
+import menuBar from '@/components/menuBar.vue';
 
 let router = useRouter();
 
@@ -42,13 +43,7 @@ function tabChange(tabName: string) {
                 <button>Send</button>
             </div>
         </div>
-        <div class="menu-bar">
-            <ul>
-                <li @click="tabChange('Timeline')">TimeLine</li>
-                <li @click="tabChange('Message')">Message</li>
-                <li @click="tabChange('Profile')">Profile</li>
-            </ul>
-        </div>
+        <menuBar></menuBar>
     </div>
 </template>
 
