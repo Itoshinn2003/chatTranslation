@@ -14,4 +14,9 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def current_user
+        current_user = User.select(:user_id, :name, :language, :sentence).find(params[:id])
+        render json: { current_user: current_user }, status: :created
+    end
+
 end

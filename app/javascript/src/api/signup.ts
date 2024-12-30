@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { ref } from 'vue';
-export let errors = ref<string[] | null>([]);
+export let errors = ref<string[]>([]);
 export let formData: {
     user_id: String | null,
     name: String | null,
@@ -18,7 +18,7 @@ export let formData: {
         const response = await axios.post('/api/user/create', params);
         return response.data
     } catch (error: any) {
-        errors.value = error.response.data
+        errors.value = error.response.data.error
         console.log(errors.value);
         return errors
     }

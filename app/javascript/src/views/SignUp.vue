@@ -1,23 +1,11 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import axios from 'axios';
-import { formData } from '@/api/signup';
-let errors = ref<string[]>([]);
+import { signUp, formData, errors } from '@/api/signup';
 let router = useRouter();
-function routedummy() {
-    router.push({ name: 'Timeline' })
+let a = function() {
+    console.log(router)
+    router.push({ name: 'Login' })
 }
-const signUp = async(params: typeof formData ) => {
-    try {
-        const response = await axios.post('/api/user/create', params);
-        return response.data
-    } catch (error: any) {
-        errors.value = error.response.data.error
-        console.log(errors.value);
-        return errors
-    }
- }
 </script>
 <template>
     <form class="mx-auto sign-up p-5">
@@ -48,7 +36,7 @@ const signUp = async(params: typeof formData ) => {
             </select>
         </div>
         <input type='submit' value="登録" class="signin-btn mb-4" @click.prevent="signUp(formData)">
-        <a @click="routedummy()">ログインに進む</a>
+        <a @click="a()">ログインに進む</a>
     </form>
 </template>
 

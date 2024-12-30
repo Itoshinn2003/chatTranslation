@@ -1,16 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, Ref } from 'vue';
+import { index, userData, profileResponse } from '@/api/profile';
 import { useRouter } from 'vue-router';
-import Timeline from '@/components/HomeTimeline.vue';
 import postBox from '@/components/postBox.vue';
 import menuBar from '@/components/menuBar.vue';
 
-let currentTab = ref(Timeline);
+let current_user = ref(null) as Ref<profileResponse | null>;
 let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
 
+index(userData).then((response) => {
+    current_user.value = response
+})
 
 function showFollowList() {
     if (showFollow.value) {
@@ -38,9 +41,9 @@ function showFollowerList() {
     <div class="profile-header">
       <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-image">
       <div class="profile-info">
-        <h3 class="profile-name">いとしん</h3>
-        <span class="profile-id">@itsn39</span>
-        <p class="profile-bio">一言コメントがここに入ります。趣味や自己紹介など。</p>
+        <h3 class="profile-name">{{ current_user?.name }}</h3>
+        <span class="profile-id">@{{ current_user?.user_id }}</span>
+        <p class="profile-bio">{{ current_user?.sentence }}</p>
         <p class="follow-number"><span @click="showFollowList">follow 29</span> <span @click="showFollowerList">follower 30</span></p>
         <button>プロフィール編集</button>
       </div>

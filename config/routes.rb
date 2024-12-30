@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
 
   post '/api/user/create', to:'api/users#create'
+  post 'api/session/create', to: 'api/sessions#create'
+  post '/api/user/current_user', to: 'api/users#current_user'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
