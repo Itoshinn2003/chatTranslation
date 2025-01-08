@@ -1,18 +1,24 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
 import { index, userData, profileResponse } from '@/api/profile';
+import { showPosts, postResponse } from '@/api/post';
 import { useRouter } from 'vue-router';
 import postBox from '@/components/postBox.vue';
 import menuBar from '@/components/menuBar.vue';
 
 let current_user = ref(null) as Ref<profileResponse | null>;
+let posts = ref(null) as Ref<postResponse | null>;
 let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
 
-index(userData).then((response) => {
-    current_user.value = response
+index({id: userData}).then((response) => {
+    current_user.value = response;
+})
+
+showPosts({id: userData}).then((response) => {
+    posts.value = response;
 })
 
 function showFollowList() {
@@ -45,10 +51,10 @@ function showFollowerList() {
         <span class="profile-id">@{{ current_user?.user_id }}</span>
         <p class="profile-bio">{{ current_user?.sentence }}</p>
         <p class="follow-number"><span @click="showFollowList">follow 29</span> <span @click="showFollowerList">follower 30</span></p>
-        <button>プロフィール編集</button>
+        <button><router-link to="/home/profile/edit">プロフィール編集</router-link></button>
       </div>
     </div>
-    <postBox :height=timelineHeight></postBox>
+    <postBox :height=timelineHeight :posts=posts></postBox>
     <menuBar></menuBar>
 
     <div class="follow-list" v-if="showFollow">

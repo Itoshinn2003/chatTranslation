@@ -19,4 +19,10 @@ class Api::UsersController < ApplicationController
         render json: { current_user: current_user }, status: :created
     end
 
+    def update
+        current_user = User.find(params[:id]) 
+        current_user.update(name: params[:name], sentence: params[:sentence])
+        render json: { current_user: current_user }
+    end
+
 end
