@@ -7,6 +7,12 @@ export const showPosts = async(params: {id: string | null}) => {
     return response.data as postResponse
 }
 
+export const createPost = async(params: {id: string | null, postData: string | null}) => {
+    const response = await axios.post('/api/post/create', params);
+    console.log(response.data)
+    return response.data as postResponse
+}
+
 export type postResponse = {
     current_user: postProfile,
     self_posts: post[]

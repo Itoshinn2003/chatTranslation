@@ -1,24 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Timeline from '@/components/HomeTimeline.vue';
 import opponentProfile from '@/components/opponentProfile.vue';
 import menuBar from '@/components/menuBar.vue';
 
-let currentTab = ref(Timeline);
 let router = useRouter();
 let showProfile = ref(false);
-
-
-function tabChange(tabName: string) {
-  if (tabName === 'Timeline') {
-    router.push({ name: 'Timeline' });
-  } else if (tabName === 'Message') {
-    router.push({ name: 'Message' });
-  } else if (tabName === 'Profile') {
-    router.push({ name: 'Profile' });
-  }
-}
 
 function showOpponentProfile() {
     if (showProfile.value) {

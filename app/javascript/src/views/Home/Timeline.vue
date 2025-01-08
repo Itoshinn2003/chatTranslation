@@ -1,12 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Timeline from '@/components/HomeTimeline.vue';
 import postBox from '@/components/postBox.vue';
 import menuBar from '@/components/menuBar.vue';
 
 let timelineHeight = '90%';
-let currentTab = ref(Timeline);
 let router = useRouter();
 let showProfile = ref(false);
 

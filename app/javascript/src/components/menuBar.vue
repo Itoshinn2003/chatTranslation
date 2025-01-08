@@ -10,6 +10,8 @@ function tabChange(tabName: string) {
     router.push({ name: 'Message' });
   } else if (tabName === 'Profile') {
     router.push({ name: 'Profile' });
+  } else if (tabName === 'createPost') {
+    router.push({ name: 'createPost' })
   }
 }
 </script>
@@ -18,6 +20,7 @@ function tabChange(tabName: string) {
         <ul class="bar-list">
             <li @click="tabChange('Timeline')">TimeLine</li>
             <li @click="tabChange('Message')">Message</li>
+            <li @click="tabChange('createPost')">➕POST</li>
             <li @click="tabChange('Profile')">Profile</li>
         </ul>
     </div>
