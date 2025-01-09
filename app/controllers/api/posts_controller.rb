@@ -7,8 +7,9 @@ class Api::PostsController < ApplicationController
     def create
         @post = Post.new(text: params[:postData], user_id: params[:id])
 
-        unless @post.save
-            p @post.errors.full_messages
+        if @post.save
+            render json: { message: "success" }, status: :created
+        else 
             render json: { error: @post.errors.full_messages }, status: :unprocessable_entity
         end
     end

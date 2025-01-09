@@ -1,27 +1,22 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
 import { index, userData, profileResponse } from '@/api/profile';
-import { showPosts, postResponse, createPost } from '@/api/post';
-import { useRouter } from 'vue-router';
-import postBox from '@/components/postBox.vue';
+import { create, errors } from '@/api/post';
 import menuBar from '@/components/menuBar.vue';
 
 let postData = ref(null) as Ref<string | null>;
-let current_user = ref(null) as Ref<profileResponse | null>;
-let router = useRouter();
-
-function click() {
-    createPost({id: userData, postData: postData.value}).then((response) => {
-    console.log(response)
-})
-}
+errors.value =[];
 </script>
 <template>
 <div class="home">
     <h2 class="text-center">CHAT-TRANSLATION</h2>
+    <ul v-if="errors.length != 0">
+        <p>エラー内容</p>
+        <li v-for="error in errors">{{ error }}</li>
+    </ul>
     <form class="p-5">
         <textarea rows="10" cols="40" v-model="postData"></textarea>
-        <input type='submit' class="d-block" value="投稿する" @click="click">
+        <input type='submit' class="d-block" value="投稿する" @click.prevent="create({id: userData, postData: postData})">
     </form>
     <menuBar></menuBar>
 </div>
