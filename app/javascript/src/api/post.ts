@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { ref } from 'vue';
 export let errors = ref<string[]>([]);
-export const showPosts = async(params: {id: string | null}) => {
+export const selfPosts = async(params: {id: string | null}) => {
     const response = await axios.post('/api/post/self_post', params);
-    return response.data as postResponse
+    return response.data.posts as postResponse[]
+}
+
+export const index = async() => {
+    const response = await axios.get('/api/post/index');
+    return response.data.posts as postResponse[]
 }
 
 export const create = async(params: {id: string | null, postData: string | null}) => {
@@ -13,21 +18,20 @@ export const create = async(params: {id: string | null, postData: string | null}
         return response.data as postResponse
     } catch (error: any) {
         errors.value = error.response.data.error
-        console.log(errors.value)
         return error.response.data.error
     }
 }
 
 export type postResponse = {
-    current_user: postProfile,
-    self_posts: post[]
+    created_at: string,
+    text: string,
+    user: {
+        name: string | null,
+        profile_id: string,
+    }
 }
 export type postProfile = {
     id: number,
     user_id: string,
     name: string | null,
-}
-export type post = {
-    created_at: string,
-    text: string,
 }

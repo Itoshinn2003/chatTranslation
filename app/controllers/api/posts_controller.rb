@@ -1,7 +1,11 @@
 class Api::PostsController < ApplicationController
 
     def index
-
+        @posts = Post.includes(:user).order(id: "DESC")
+        render json: { posts: @posts.as_json(
+            only: %i[created_at text],
+            include: { user: { only: %i[name profile_id] }}
+        ) }
     end
 
     def create
@@ -14,10 +18,10 @@ class Api::PostsController < ApplicationController
         end
     end
 
+    
     def self_post
-        current_user = User.select(:id, :user_id, :name).find(params[:id])
-        render json: { current_user: current_user, self_posts: current_user.posts.select(:created_at, :text).order(id: "DESC") }
+        self_posts = Post.includes(:user).where(user_id: params[:id]).order(id: "DESC")
+        render json: { posts: self_posts.as_json(include: [:user]) }
     end
-
     
 end
