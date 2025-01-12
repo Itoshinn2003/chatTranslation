@@ -21,17 +21,3 @@ export const create = async(params: {id: string | null, postData: string | null}
         return error.response.data.error
     }
 }
-
-export type postResponse = {
-    created_at: string,
-    text: string,
-    user: {
-        name: string | null,
-        profile_id: string,
-    }
-}
-export type postProfile = {
-    id: number,
-    user_id: string,
-    name: string | null,
-}
