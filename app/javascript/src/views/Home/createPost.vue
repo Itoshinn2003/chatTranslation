@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { index, userData, profileResponse } from '@/api/profile';
+import { index } from '@/api/profile';
 import { create, errors } from '@/api/post';
 import menuBar from '@/components/menuBar.vue';
+import { userStore } from '@/store/user';
 
+let store = userStore();
 let postData = ref(null) as Ref<string | null>;
 errors.value =[];
 </script>
@@ -16,7 +18,7 @@ errors.value =[];
     </ul>
     <form class="p-5">
         <textarea rows="10" cols="40" v-model="postData"></textarea>
-        <input type='submit' class="d-block" value="投稿する" @click.prevent="create({id: userData, postData: postData})">
+        <input type='submit' class="d-block" value="投稿する" @click.prevent="create({id: store.userData, postData: postData})">
     </form>
     <menuBar></menuBar>
 </div>

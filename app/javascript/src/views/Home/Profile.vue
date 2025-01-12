@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { index, userData, profileResponse } from '@/api/profile';
-import { selfPosts, postResponse } from '@/api/post';
+import { index } from '@/api/profile';
+import { userStore } from '@/store/user';
+import { selfPosts } from '@/api/post';
 import { useRouter } from 'vue-router';
 import postBox from '@/components/postBox.vue';
 import menuBar from '@/components/menuBar.vue';
 
+let Store = userStore();
 let current_user = ref(null) as Ref<profileResponse | null>;
 let posts = ref([]) as Ref<postResponse[]>;
 let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
-
-index({id: userData}).then((response) => {
+index({id: Store.userData}).then((response) => {
     current_user.value = response;
 })
 
-selfPosts({id: userData}).then((response) => {
+selfPosts({id: Store.userData}).then((response) => {
     posts.value = response;
 })
 

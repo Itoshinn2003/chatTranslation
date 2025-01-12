@@ -3,13 +3,16 @@ import {formData, errors } from '@/api/signin';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
 let router = useRouter();
+import { userStore } from '@/store/user';
+let Store = userStore();
 // tsファイルでrouter使えなかったからこちらに書く
 const signIn = async(params: typeof formData ) => {
     try {
         const response = await axios.post('/api/session/create', params);
         console.log(response.data.user.id)
         window.sessionStorage.setItem('id',response.data.user.id);
-        console.log(router)
+        Store.getUserData();
+        console.log(Store.userData);
         router.push({ name: 'Profile' })
     } catch (error: any) {
         errors.value = error.response.data.error
