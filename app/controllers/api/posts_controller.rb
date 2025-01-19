@@ -1,10 +1,14 @@
 class Api::PostsController < ApplicationController
 
     def index
-        @posts = Post.includes(:user).order(id: "DESC")
+        unless params[:id].nil?
+            @posts = Post.includes(:user).where(user_id: params[:id]).order(id: "DESC")
+        else 
+            @posts = Post.includes(:user).order(id: "DESC")
+        end
         render json: { posts: @posts.as_json(
             only: %i[created_at text],
-            include: { user: { only: %i[name profile_id] }}
+            include: { user: { only: %i[id name user_id] }}
         ) }
     end
 

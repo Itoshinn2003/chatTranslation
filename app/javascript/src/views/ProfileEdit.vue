@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { index, updateProfile } from '@/api/profile';
+import { currentUser, updateProfile } from '@/api/profile';
 import { userStore } from '@/store/user';
 
 let store = userStore();
@@ -8,7 +8,7 @@ let name = ref(null) as Ref<string | null>;
 let sentence= ref(null) as Ref<string | null>;
 
 let current_user = ref(null) as Ref<profileResponse | null>;
-index({id: store.userData}).then((response) => {
+currentUser({id: store.userData}).then((response) => {
     current_user.value = response
     name.value = current_user.value.name;
     sentence.value = current_user.value.sentence;

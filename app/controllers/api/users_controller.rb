@@ -25,4 +25,14 @@ class Api::UsersController < ApplicationController
         render json: { current_user: current_user }
     end
 
+    def show
+        user = User.includes(:posts).find(params[:id])
+        p "ユーザ#{user.name}"
+        p user.attributes 
+        render json: { user: user.as_json(
+            only: %i[id user_id name  sentence],
+            include: { posts: { only: %i[created_at text] }}
+        ) }
+    end
+
 end

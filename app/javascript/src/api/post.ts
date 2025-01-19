@@ -6,8 +6,8 @@ export const selfPosts = async(params: {id: string | null}) => {
     return response.data.posts as postResponse[]
 }
 
-export const index = async() => {
-    const response = await axios.get('/api/post/index');
+export const index = async(params?: {id: string | undefined}) => {
+    const response = await axios.get('/api/post/index', {params});
     return response.data.posts as postResponse[]
 }
 

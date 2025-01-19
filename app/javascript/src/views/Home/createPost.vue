@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { index } from '@/api/profile';
+import { currentUser } from '@/api/profile';
 import { create, errors } from '@/api/post';
 import menuBar from '@/components/menuBar.vue';
 import { userStore } from '@/store/user';

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, Ref } from 'vue';
-import { index } from '@/api/profile';
+import { currentUser } from '@/api/profile';
 import { userStore } from '@/store/user';
 import { selfPosts } from '@/api/post';
 import { useRouter } from 'vue-router';
@@ -14,7 +14,7 @@ let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
 let showFollower = ref(false);
-index({id: Store.userData}).then((response) => {
+currentUser({id: Store.userData}).then((response) => {
     current_user.value = response;
 })
 

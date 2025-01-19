@@ -9,14 +9,11 @@ let Store = userStore();
 const signIn = async(params: typeof formData ) => {
     try {
         const response = await axios.post('/api/session/create', params);
-        console.log(response.data.user.id)
         window.sessionStorage.setItem('id',response.data.user.id);
         Store.getUserData();
-        console.log(Store.userData);
         router.push({ name: 'Profile' })
     } catch (error: any) {
         errors.value = error.response.data.error
-        console.log(errors.value);
     }
  }
 </script>

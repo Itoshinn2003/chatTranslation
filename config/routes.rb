@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/api/user/update', to: 'api/users#update'
   post '/api/post/self_post', to: 'api/posts#self_post'
   get '/api/post/index', to: 'api/posts#index'
+  post '/api/user/:id', to: 'api/users#show'
   post '/api/post/create', to: 'api/posts#create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

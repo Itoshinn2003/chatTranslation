@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_12_062315) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_18_091137) do
+  create_table "follows", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "follow", null: false
+    t.bigint "follower", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow"], name: "fk_rails_2016147f1d"
+    t.index ["follower"], name: "fk_rails_2712f8dae3"
+  end
+
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "text"
     t.bigint "user_id", null: false
@@ -29,5 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_12_062315) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "follows", "users", column: "follow"
+  add_foreign_key "follows", "users", column: "follower"
   add_foreign_key "posts", "users"
 end
