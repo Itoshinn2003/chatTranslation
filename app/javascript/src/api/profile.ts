@@ -11,8 +11,8 @@ export const updateProfile = async(params: updateProfileApi) => {
    return response.data.current_user as profileResponse
 }
 
-export const show = async(params: {id: number | null}) => {
+export const show = async(params: {id: number | null, myId: string | null}) => {
    const response = await axios.post(`/api/user/${params.id}`, params);
    console.log(response.data.user)
-   return response.data.user as userResponse
+   return response.data as userResponse
 }

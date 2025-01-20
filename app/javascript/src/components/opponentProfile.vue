@@ -1,34 +1,44 @@
 <script setup lang="ts">
 import { index } from '@/api/post';
 import { ref, Ref } from 'vue';
-const props = defineProps<{
-    user: null | userResponse;
-}>();
+import { create } from '@/api/follow';
+import { userStore } from '@/store/user';
 import postBox from '@/components/postBox.vue';
+
+const props = defineProps<{
+    userData: null | userResponse;
+}>();
+let Store = userStore();
 let posts = ref([]) as Ref<postResponse[]>;
-
-
-index({id: props.user?.id}).then((response) => {
+let timelineHeight = "60%";
+let isFollow = ref(!props.userData?.follow) as Ref<Boolean | null>;
+index({id: props.userData?.user.id}).then((response) => {
     posts.value = response;
 })
-let timelineHeight = "60%";
+console.log(isFollow.value);
+
+
 </script>
 <template>
         <div class="opponent-profile">
             <div class="opponent-profile-header">
                 <img src="@/images/facebook.jpeg" alt="プロフィール画像" class="profile-image">
                 <div class="profile-info">
-                    <h3 class="profile-name">{{ user?.name }}</h3>
-                    <span class="profile-id">@{{ user?.user_id }}</span>
-                    <p class="profile-bio">{{ user?.sentence }}</p>
+                    <h3 class="profile-name">{{ userData?.user.name }}</h3>
+                    <span class="profile-id">@{{ userData?.user.user_id }}</span>
+                    <p class="profile-bio">{{ userData?.user.sentence }}</p>
                     <p class="follow-number">follow 29 follower 30</p>
+                    <button v-if="Store.userData != userData?.user.id"    @click="create({id: Store.userData, opponentId: userData?.user.id})">{{ isFollow ? "フォローする" : "フォロー中" }}</button>
                 </div>
             </div>
             <postBox :height="timelineHeight" :posts="posts"></postBox>
         </div>
 </template>
 
-<style>
+<style scoped>
+button {
+    margin: 20px 0;
+}
 .opponent-profile {
     background-color:white;
     position: absolute;

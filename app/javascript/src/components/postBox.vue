@@ -2,9 +2,10 @@
 import { ref, Ref } from 'vue';
 import opponentProfile from '@/components/opponentProfile.vue';
 import { show } from '@/api/profile';
-import { userInfo } from 'os';
+import { userStore } from '@/store/user';
+let Store = userStore();
 let showProfile = ref(false);
-let user = ref(null) as Ref<null | userResponse>;
+let userData = ref(null) as Ref<null | userResponse>;
 const props = defineProps<{
   height: string;
   posts: postResponse[];
@@ -14,8 +15,8 @@ function showOpponentProfile(id: number) {
         history.pushState(null, '', '/home/timeline');
         showProfile.value = false;
     } else {
-        show({id: id}).then((response) => {
-            user.value = response;
+        show({id: id, myId: Store.userData}).then((response) => {
+            userData.value = response;
             history.pushState(null, '', `/home/timeline/profile/${id}`);
             showProfile.value = true;
         })
@@ -39,5 +40,5 @@ function showOpponentProfile(id: number) {
         </div>
     </div>
 </div>
-<opponentProfile v-if="showProfile" :user="user"></opponentProfile>
+<opponentProfile v-if="showProfile" :userData="userData"></opponentProfile>
 </template>

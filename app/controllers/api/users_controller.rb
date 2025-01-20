@@ -27,12 +27,14 @@ class Api::UsersController < ApplicationController
 
     def show
         user = User.includes(:posts).find(params[:id])
-        p "ユーザ#{user.name}"
-        p user.attributes 
-        render json: { user: user.as_json(
+        follow = Follow.find_by(follow: params[:myId], follower: params[:id]).nil?
+        render json: { 
+        user: user.as_json(
             only: %i[id user_id name  sentence],
             include: { posts: { only: %i[created_at text] }}
-        ) }
+        ),
+        follow: follow
+        }
     end
 
 end

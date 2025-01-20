@@ -14,7 +14,9 @@ type profileResponse = {
     language: string,
     sentence: string | null,
  }
- type userResponse = {
+
+
+ type user = {
     id: string,
     name: string,
     user_id: string,
@@ -24,6 +26,11 @@ type profileResponse = {
         text: string
     }
  }
+ type userResponse = {
+    user: user,
+    follow: boolean
+ }
+
 
 type updateProfileApi = {
    id: string | null;

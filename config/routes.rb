@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/api/post/index', to: 'api/posts#index'
   post '/api/user/:id', to: 'api/users#show'
   post '/api/post/create', to: 'api/posts#create'
+  post '/api/follow/create', to: 'api/follows#create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
