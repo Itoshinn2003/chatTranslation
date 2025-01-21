@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { index } from '@/api/post';
-import { ref, Ref } from 'vue';
-import { create } from '@/api/follow';
+import { ref, Ref, watch } from 'vue';
+import { create, destroy } from '@/api/follow';
 import { userStore } from '@/store/user';
 import postBox from '@/components/postBox.vue';
 
@@ -15,7 +15,16 @@ let isFollow = ref(!props.userData?.follow) as Ref<Boolean | null>;
 index({id: props.userData?.user.id}).then((response) => {
     posts.value = response;
 })
-console.log(isFollow.value);
+
+function changeFollow() {
+    if ( isFollow.value ) {
+        destroy({id: Store.userData, opponentId: props.userData?.user.id})
+        isFollow.value = false;
+    } else {
+        create({id: Store.userData, opponentId: props.userData?.user.id})
+        isFollow.value = true;
+    }
+}
 
 
 </script>
@@ -28,7 +37,7 @@ console.log(isFollow.value);
                     <span class="profile-id">@{{ userData?.user.user_id }}</span>
                     <p class="profile-bio">{{ userData?.user.sentence }}</p>
                     <p class="follow-number">follow 29 follower 30</p>
-                    <button v-if="Store.userData != userData?.user.id"    @click="create({id: Store.userData, opponentId: userData?.user.id})">{{ isFollow ? "フォローする" : "フォロー中" }}</button>
+                    <button v-if="Store.userData != userData?.user.id"    @click="changeFollow()">{{ isFollow ? 'フォロー中' : 'フォローする' }}</button>
                 </div>
             </div>
             <postBox :height="timelineHeight" :posts="posts"></postBox>

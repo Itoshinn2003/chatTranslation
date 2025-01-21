@@ -9,7 +9,9 @@ class Api::FollowsController < ApplicationController
         end
     end
 
-    def delete
-
+    def destroy
+        @follow = Follow.find_by(follow: params[:id], follower: params[:opponentId])
+        @follow.destroy
+        render json: { message: "success" }, status: :ok
     end
 end
