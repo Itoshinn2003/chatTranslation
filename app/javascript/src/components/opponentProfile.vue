@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { index } from '@/api/post';
-import { ref, Ref, watch } from 'vue';
+import { ref, Ref } from 'vue';
 import { create, destroy } from '@/api/follow';
 import { userStore } from '@/store/user';
+import { countFollow } from '@/api/follow';
 import postBox from '@/components/postBox.vue';
 
 const props = defineProps<{
@@ -10,10 +11,14 @@ const props = defineProps<{
 }>();
 let Store = userStore();
 let posts = ref([]) as Ref<postResponse[]>;
+let followCount = ref(null) as Ref<followCountResponse | null>;
 let timelineHeight = "60%";
 let isFollow = ref(!props.userData?.follow) as Ref<Boolean | null>;
 index({id: props.userData?.user.id}).then((response) => {
     posts.value = response;
+})
+countFollow({id: props.userData?.user.id}).then((response) => {
+    followCount.value = response;
 })
 
 function changeFollow() {
@@ -36,7 +41,7 @@ function changeFollow() {
                     <h3 class="profile-name">{{ userData?.user.name }}</h3>
                     <span class="profile-id">@{{ userData?.user.user_id }}</span>
                     <p class="profile-bio">{{ userData?.user.sentence }}</p>
-                    <p class="follow-number">follow 29 follower 30</p>
+                    <p class="follow-number">follow {{ followCount?.follow }} follower {{ followCount?.follower }}</p>
                     <button v-if="Store.userData != userData?.user.id"    @click="changeFollow()">{{ isFollow ? 'フォロー中' : 'フォローする' }}</button>
                 </div>
             </div>
