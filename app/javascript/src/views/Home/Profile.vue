@@ -4,12 +4,14 @@ import { currentUser } from '@/api/profile';
 import { userStore } from '@/store/user';
 import { selfPosts } from '@/api/post';
 import { useRouter } from 'vue-router';
+import { countFollow } from '@/api/follow';
 import postBox from '@/components/postBox.vue';
 import menuBar from '@/components/menuBar.vue';
 
 let Store = userStore();
 let current_user = ref(null) as Ref<profileResponse | null>;
 let posts = ref([]) as Ref<postResponse[]>;
+let followCount = ref(null) as Ref<followCountResponse | null>;
 let timelineHeight = '65%';
 let router = useRouter();
 let showFollow = ref(false);
@@ -20,6 +22,9 @@ currentUser({id: Store.userData}).then((response) => {
 
 selfPosts({id: Store.userData}).then((response) => {
     posts.value = response;
+})
+countFollow({id: Store.userData}).then((response) => {
+    followCount.value = response;
 })
 
 function showFollowList() {
@@ -51,7 +56,7 @@ function showFollowerList() {
         <h3 class="profile-name">{{ current_user?.name }}</h3>
         <span class="profile-id">@{{ current_user?.user_id }}</span>
         <p class="profile-bio">{{ current_user?.sentence }}</p>
-        <p class="follow-number"><span @click="showFollowList">follow 29</span> <span @click="showFollowerList">follower 30</span></p>
+        <p class="follow-number"><span @click="showFollowList">follow {{ followCount?.follow }}</span> <span @click="showFollowerList">follower {{ followCount?.follower }}</span></p>
         <button><router-link to="/home/profile/edit">プロフィール編集</router-link></button>
       </div>
     </div>

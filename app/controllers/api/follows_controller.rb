@@ -14,4 +14,15 @@ class Api::FollowsController < ApplicationController
         @follow.destroy
         render json: { message: "success" }, status: :ok
     end
+
+
+    def countFollow
+        follow = Follow.where(follow: params[:id]).count
+        follower = Follow.where(follower: params[:id]).count
+
+        render json: {
+            follow: follow,
+            follower: follower
+        }
+    end
 end

@@ -10,3 +10,9 @@ export const destroy = async(params: {id: string | null, opponentId: string | un
     const response = await axios.delete(`/api/follow/${params.id}`, {params});
     return response.data 
 }
+
+
+export const countFollow = async(params: {id: string | null}) => {
+    const response = await axios.get(`/api/follow/countFollow`, {params});
+    return response.data 
+}

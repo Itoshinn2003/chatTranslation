@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post '/api/user/:id', to: 'api/users#show'
   post '/api/post/create', to: 'api/posts#create'
   post '/api/follow/create', to: 'api/follows#create'
-
+  get '/api/follow/countFollow', to: 'api/follows#countFollow'
   delete '/api/follow/:id', to: 'api/follows#destroy'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

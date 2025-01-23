@@ -37,3 +37,8 @@ type updateProfileApi = {
    name: string | null;
    sentence: string | null;
 }
+
+type followCountResponse = {
+    follow: number,
+    follower: number
+}
