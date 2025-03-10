@@ -1,20 +1,21 @@
 <script setup lang="ts">
-import {formData, errors } from '@/api/signin';
+import { ref } from 'vue';
+import { formData, signIn } from '@/api/signin';
 import axios from 'axios';
 import { useRouter } from 'vue-router';
-let router = useRouter();
 import { userStore } from '@/store/user';
+let router = useRouter();
 let Store = userStore();
-// tsファイルでrouter使えなかったからこちらに書く
-const signIn = async(params: typeof formData ) => {
-    try {
-        const response = await axios.post('/api/session/create', params);
-        window.sessionStorage.setItem('id',response.data.user.id);
+let errors = ref<string[]>([]);
+
+ function handleSignIn() {
+    signIn(formData).then((data) => {
+        window.sessionStorage.setItem('id',data.user.id);
         Store.getUserData();
         router.push({ name: 'Profile' })
-    } catch (error: any) {
-        errors.value = error.response.data.error
-    }
+    }).catch((error) => {
+        errors.value = error.response.data
+    })
  }
 </script>
 
@@ -29,7 +30,7 @@ const signIn = async(params: typeof formData ) => {
             <p>Password</p>
             <input type="password" class="stylish-input" placeholder="Your PASSWORD" v-model="formData.password">
         </div>
-        <input type='submit' value="ログイン" class="login-btn" @click.prevent="signIn(formData)">
+        <input type='submit' value="ログイン" class="login-btn" @click.prevent="handleSignIn()">
     </form>
 </template>
 

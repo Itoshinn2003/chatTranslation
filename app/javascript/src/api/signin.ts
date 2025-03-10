@@ -8,3 +8,8 @@ export let formData: {
     user_id:'',
     password:'',
  }
+
+export const signIn = async(params: typeof formData ) => {
+   const response = await axios.post('/api/session/create', params);
+   return response.data
+}

@@ -1,10 +1,16 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { signUp, formData, errors } from '@/api/signup';
+import { signUp, formData } from '@/api/signup';
 let router = useRouter();
-let a = function() {
-    console.log(router)
-    router.push({ name: 'Login' })
+let errors = ref<string[]>([]);
+
+function handleSignUp() {
+    signUp(formData).then((data) => {
+        router.push({ name: 'Login' })
+    }).catch((error) => {
+        errors.value = error.response.data
+    })
 }
 </script>
 <template>
@@ -35,8 +41,8 @@ let a = function() {
                 <option value="english">English</option>
             </select>
         </div>
-        <input type='submit' value="登録" class="signin-btn mb-4" @click.prevent="signUp(formData)">
-        <a @click="a()">ログインに進む</a>
+        <input type='submit' value="登録" class="signin-btn mb-4" @click.prevent="handleSignUp()">
+        <a @click="router.push({ name: 'Login' })">ログインに進む</a>
     </form>
 </template>
 
