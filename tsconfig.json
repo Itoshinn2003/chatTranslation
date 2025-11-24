@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+      "target": "es2020",
+      "module": "esnext",
+      "lib": ["es2020", "dom"],
+      "jsx": "react",
+      "sourceMap": true,
+      "outDir": "./dist",
+      "rootDir": "./app/javascript/src",
+      "strict": true,
+      "moduleResolution": "node",
+      "baseUrl": "app/javascript/src",
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    },
+      "esModuleInterop": true,
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["app/javascript/**/*.ts", "app/javascript/**/*.d.ts", "app/javascript/**/*.tsx", "app/javascript/**/*.vue"],
+    "exclude": ["dist", "node_modules"],
+    "compileOnSave": false
+  }

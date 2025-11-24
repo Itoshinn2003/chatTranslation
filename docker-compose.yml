@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: password 
+      MYSQL_DATABASE: server_development
+    ports:
+    - 3306:3306
+    # command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql
+  web: 
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle install  && npm install && foreman start -f Procfile.dev"
+    user: root
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+      - "3036:3036"
+    depends_on:
+      - db
+    environment:
+      - RAILS_ENV=development
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+volumes:
+  mysql-data:
+    driver: local
+    
